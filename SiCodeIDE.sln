@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiCodeIDE", "SiCodeIDE\SiCodeIDE.csproj", "{B311C30C-2982-4997-8DE7-98F208B8535D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiCode.IDE", "SiCode.IDE\SiCode.IDE.csproj", "{8A2C2727-E22E-419D-8A58-2D7ECE5C3EEB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B311C30C-2982-4997-8DE7-98F208B8535D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B311C30C-2982-4997-8DE7-98F208B8535D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B311C30C-2982-4997-8DE7-98F208B8535D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B311C30C-2982-4997-8DE7-98F208B8535D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A2C2727-E22E-419D-8A58-2D7ECE5C3EEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A2C2727-E22E-419D-8A58-2D7ECE5C3EEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A2C2727-E22E-419D-8A58-2D7ECE5C3EEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A2C2727-E22E-419D-8A58-2D7ECE5C3EEB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7C5DE88D-6F9F-46DA-B982-247B05E7B1F2}
+	EndGlobalSection
+EndGlobal

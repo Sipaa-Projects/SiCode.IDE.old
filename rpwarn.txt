@@ -1,0 +1,5 @@
+WARNING :
+
+You are going to install a Release Preview version of SiCode IDE.
+
+There can be many bugs so please DM me on Discord when you find one.

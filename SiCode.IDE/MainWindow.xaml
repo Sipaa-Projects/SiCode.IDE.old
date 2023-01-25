@@ -1,0 +1,44 @@
+﻿<ui:FluentWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        xmlns:local="clr-namespace:SiCode.IDE"
+        xmlns:Forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:FastColoredTextBoxNS="clr-namespace:FastColoredTextBoxNS;assembly=FastColoredTextBox" xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit" xmlns:Text="clr-namespace:System.Text;assembly=mscorlib" x:Class="SiCode.IDE.MainWindow"
+        mc:Ignorable="d"
+        ExtendsContentIntoTitleBar="True"
+        WindowBackdropType="Tabbed"
+        Title="SiCode IDE" Height="450" Width="800" Background="Black" Icon="sicode.ico">
+    <Grid>
+        <ui:TitleBar HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="32" CloseClicked="TitleBar_CloseClicked"/>
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Width="558" Height="32" Margin="16, 0, 0, 0">
+            <Image Width="16" Height="16" HorizontalAlignment="Left" Margin="0, 8" Source="sicode.ico"/>
+            <TextBlock x:Name="titleTextBlock" HorizontalAlignment="Left" Foreground="White"  VerticalAlignment="Center" Margin="24,0,0,0" Text="SiCode IDE" Width="524"/>
+        </Grid>
+        <Menu x:Name="menu" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,32,0,0" Height="48" Background="Transparent" Foreground="White">
+            <ui:MenuItem Header="File">
+                <ui:MenuItem Header="New..." SymbolIcon="New20" Click="MenuItem_Click"/>
+                <ui:MenuItem Header="Open..." SymbolIcon="Document20" Click="OpenFileClick"/>
+                <ui:MenuItem Header="Save program..." SymbolIcon="Save20" Click="MenuItem_Click_3"/>
+                <ui:MenuItem Header="Return to home" SymbolIcon="Home20" Click="MenuItem_Click_8"/>
+            </ui:MenuItem>
+            <ui:MenuItem Header="Compiler">
+                <ui:MenuItem Header="Compile" SymbolIcon="PuzzlePiece20" Click="MenuItem_Click_1"/>
+                <ui:MenuItem Header="Run" SymbolIcon="Play20" Click="MenuItem_Click_2"/>
+                <ui:MenuItem Header="Last compile errors" SymbolIcon="ErrorCircle20" Click="MenuItem_Click_4"/>
+                <ui:MenuItem Header="Last compile logs" SymbolIcon="Text16" Click="MenuItem_Click_5"/>
+                <ui:MenuItem Header="Referenced Assemblies" SymbolIcon="List20" Click="MenuItem_Click_6"/>
+            </ui:MenuItem>
+            <ui:MenuItem Header="Options" Click="MenuItem_Click_7"/>
+            <ui:MenuItem Header="Help">
+                <ui:MenuItem Header="About SiCode IDE" Click="AboutMenuItem_Click"/>
+            </ui:MenuItem>
+        </Menu>
+        <avalonedit:TextEditor Background="#3232320B" x:Name="textEditor" FontFamily="Consolas" HorizontalAlignment="Stretch" Margin="0,80,0,0" VerticalAlignment="Stretch" SyntaxHighlighting="C#" Foreground="White" SelectedText="" ShowLineNumbers="True">
+            <avalonedit:TextEditor.Encoding>
+                <Text:UTF8Encoding/>
+            </avalonedit:TextEditor.Encoding>
+        </avalonedit:TextEditor>
+    </Grid>
+</ui:FluentWindow>
