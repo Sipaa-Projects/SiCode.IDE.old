@@ -1,8 +1,8 @@
-![screenshot](https://user-images.githubusercontent.com/81994075/208655446-a032a0c8-4ef9-47db-b1e8-322ad918fd94.png)
+![image](https://user-images.githubusercontent.com/81994075/214524136-62a63642-eb3a-4ea1-ad0e-180e20fa8113.png)
 
 # SiCode IDE
 
-### SiCode IDE is the official IDE to create applications for the SipaaKernel operative system, and MUCH more!
+### SiCode IDE is the official IDE to create applications / libraries for SipaaKernel, and MUCH more!
 
 Do you want an IDE, but you have a shitty PC / the shittest internet connexion ever? (or something worse), SiCode IDE is made for YOU!
 
@@ -10,9 +10,10 @@ SiCode IDE is a lightweight, fast IDE for C# & Visual Basic! yes, C# & Visual Ba
 
 ## Features.
 
+* WPF based UI
 * C# & Visual Basic compiler
 * Properties
-* Windows 11 Visual effects support (powered by DWM)
+* Windows 11 Visual effects & Windows 7 Aero support (powered by DWM)
 * Syntax highliting / word wrap
 * Project system
 * Referenced assemblies (in developement...)
@@ -35,18 +36,26 @@ And much more soon...
 * Random Access Memory (RAM): 256MB or above.
 * Disk Space: 10GB. (to store the created projects)
 
+## Performance
+SiCode IDE is using between 30-50mb of RAM, 0-1% of CPU, 0-0.5% of disk & 0% of GPU.
+
+![image](https://user-images.githubusercontent.com/81994075/214603157-93f91d3c-1422-4f74-87c3-51a1bec89d41.png)
+
+
 ## License
 The source code, the icon and the name is licensed under the [MIT License](https://github.com/RaphMar2021/SiCodeIDE/blob/master/license.txt)
 
 ## Credits
 
 * RaphMar2021 - The creator and main programmer of SiCode.
-* GreenSoupDeveloper- Made the icon of SiCode.
+* GreenSoupDeveloper - Made the icon of SiCode.
+* icsharpcode - Developer of AvalonEdit, used in SiCode IDE.
+* lepo.co - Developer of WPF UI, used in SiCode IDE.
 
 ## Contact
 
-if you have any question, send a Discord message to RaphMar2022#6488 or GreenSoup Dev#6479.
+if you have any question, send a Discord message to RaphMar2022#6488 or GreenSoup Developer#4806.
 
 ## Windows Defender
 
-To open SiCode installer, you have to deactivate Windows Defender, because he recognices it like a virus, but is not a virus.
+To open SiCode installer, you have to disable Windows Defender, because he recognices it as Trojan:Win32/Wacatac.H!ml, but is not a virus.
