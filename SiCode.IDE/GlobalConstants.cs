@@ -16,6 +16,7 @@ namespace SiCodeIDE
             $"Module Program\n" +
             $"   Sub Main(args As String())\n" +
             $"       Console.WriteLine(2 + 2);\n" +
+            $"       Console.ReadKey();\n" +
             $"   End Sub\n" +
             $"End Module";
         
@@ -37,6 +38,7 @@ namespace SiCodeIDE
             "       static void Main(string[] args)\n" +
             "       {\n" +
             "           Console.WriteLine(2 + 2);\n" +
+            "           Console.ReadKey();\n" +
             "       }\n" +
             "   }\n" +
             "}";

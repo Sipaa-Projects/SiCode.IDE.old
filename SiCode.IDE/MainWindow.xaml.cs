@@ -1,21 +1,7 @@
 ﻿using ICSharpCode.AvalonEdit.Folding;
-using ICSharpCode.AvalonEdit;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-using dr = System.Drawing;
 using System.Windows.Threading;
 using Microsoft.Win32;
 using System.IO;
@@ -25,7 +11,6 @@ using ICSharpCode.AvalonEdit.Highlighting;
 using ICSharpCode.AvalonEdit.Highlighting.Xshd;
 using SiCodeIDE;
 using System.Diagnostics;
-using System.Security.Cryptography;
 using System.Xml;
 using Wpf.Ui.Appearance;
 
@@ -102,9 +87,23 @@ namespace SiCode.IDE
                 {
                     case 0:
                         textEditor.TextArea.IndentationStrategy = new ICSharpCode.AvalonEdit.Indentation.CSharp.CSharpIndentationStrategy(textEditor.Options);
+                        foldingUpdateTimer.Stop();
+                        foldingStrategy = new BraceFoldingStrategy();
+                        foldingUpdateTimer.Tick += delegate
+                        {
+                            foldingStrategy.UpdateFoldings(foldingManager, textEditor.Document);
+                        };
+                        foldingUpdateTimer.Start();
                         break;
                     case 1:
                         textEditor.TextArea.IndentationStrategy = new ICSharpCode.AvalonEdit.Indentation.CSharp.CSharpIndentationStrategy(textEditor.Options);
+                        foldingUpdateTimer.Stop();
+                        foldingStrategy = new BraceFoldingStrategy();
+                        foldingUpdateTimer.Tick += delegate
+                        {
+                            foldingStrategy.UpdateFoldings(foldingManager, textEditor.Document);
+                        };
+                        foldingUpdateTimer.Start();
                         break;
                     case 2:
                         foldingUpdateTimer.Stop();
@@ -160,9 +159,23 @@ namespace SiCode.IDE
                     {
                         case 0:
                             textEditor.TextArea.IndentationStrategy = new ICSharpCode.AvalonEdit.Indentation.CSharp.CSharpIndentationStrategy(textEditor.Options);
+                            foldingUpdateTimer.Stop();
+                            foldingStrategy = new BraceFoldingStrategy();
+                            foldingUpdateTimer.Tick += delegate
+                            {
+                                foldingStrategy.UpdateFoldings(foldingManager, textEditor.Document);
+                            };
+                            foldingUpdateTimer.Start();
                             break;
                         case 1:
                             textEditor.TextArea.IndentationStrategy = new ICSharpCode.AvalonEdit.Indentation.CSharp.CSharpIndentationStrategy(textEditor.Options);
+                            foldingUpdateTimer.Stop();
+                            foldingStrategy = new BraceFoldingStrategy();
+                            foldingUpdateTimer.Tick += delegate
+                            {
+                                foldingStrategy.UpdateFoldings(foldingManager, textEditor.Document);
+                            };
+                            foldingUpdateTimer.Start();
                             break;
                         case 2:
                             foldingUpdateTimer.Stop();
@@ -181,7 +194,6 @@ namespace SiCode.IDE
                             {
                                 foldingStrategy.UpdateFoldings(foldingManager, textEditor.Document);
                             };
-                            foldingUpdateTimer.Start();
                             foldingUpdateTimer.Start();
                             Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory + "SS.xshd");
                             textEditor.SyntaxHighlighting = HighlightingLoader.Load(HighlightingLoader.LoadXshd(new XmlTextReader(AppDomain.CurrentDomain.BaseDirectory + "HighlightRefs\\SS.xshd")), HighlightingManager.Instance);
@@ -218,9 +230,23 @@ namespace SiCode.IDE
                         {
                             case 0:
                                 textEditor.TextArea.IndentationStrategy = new ICSharpCode.AvalonEdit.Indentation.CSharp.CSharpIndentationStrategy(textEditor.Options);
+                                foldingUpdateTimer.Stop();
+                                foldingStrategy = new BraceFoldingStrategy();
+                                foldingUpdateTimer.Tick += delegate
+                                {
+                                    foldingStrategy.UpdateFoldings(foldingManager, textEditor.Document);
+                                };
+                                foldingUpdateTimer.Start();
                                 break;
                             case 1:
                                 textEditor.TextArea.IndentationStrategy = new ICSharpCode.AvalonEdit.Indentation.CSharp.CSharpIndentationStrategy(textEditor.Options);
+                                foldingUpdateTimer.Stop();
+                                foldingStrategy = new BraceFoldingStrategy();
+                                foldingUpdateTimer.Tick += delegate
+                                {
+                                    foldingStrategy.UpdateFoldings(foldingManager, textEditor.Document);
+                                };
+                                foldingUpdateTimer.Start();
                                 break;
                             case 2:
                                 foldingUpdateTimer.Stop();
@@ -265,18 +291,39 @@ namespace SiCode.IDE
                 switch ((int)CurrentProject.ProjectType)
                 {
                     case 0:
-                        csc.Compile(CurrentProject);
+                        var code3 = csc.Compile(CurrentProject);
+                        SetStatus(code3);
                         break;
                     case 1:
-                        csc.Compile(CurrentProject);
+                        var code2 = csc.Compile(CurrentProject);
+                        SetStatus(code2);
                         break;
                     case 2:
-                        vbc.Compile(CurrentProject);
+                        var code1 = vbc.Compile(CurrentProject);
+                        SetStatus(code1);
                         break;
                     case 3:
-                        vbc.Compile(CurrentProject);
+                        var code = vbc.Compile(CurrentProject);
+                        SetStatus(code);
                         break;
                 }
+            }
+        }
+
+        public void SetStatus(int code)
+        {
+            switch (code)
+            {
+                case -1:
+                    compileStatus.Text = "Unknown error";
+                    break;
+                case 0:
+                    compileStatus.Text = "Compile happened successfully.";
+                    break;
+                case 1:
+                    compileStatus.Text = "Compile happened with errors.";
+                    break;
+
             }
         }
 
@@ -294,7 +341,14 @@ namespace SiCode.IDE
 
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)
         {
-            File.WriteAllText(CurrentProject.Program, textEditor.Text);
+            if (CurrentProject == null || CurrentProject == ProjectIniReader.UnknownProject)
+            {
+                MessageBox.Show("Please open a project before doing this action.", "SiCode IDE", MessageBoxButton.OK);
+            }
+            else
+            {
+                File.WriteAllText(CurrentProject.Program, textEditor.Text);
+            }
         }
 
         private void MenuItem_Click_4(object sender, RoutedEventArgs e)

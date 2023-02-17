@@ -49,12 +49,7 @@ namespace SiCode.IDE
             msgBox.ButtonLeftAppearance = Wpf.Ui.Controls.ControlAppearance.Transparent;
             msgBox.Show();**/
 
-            optionsApplyDialog.Title = "SiCode IDE";
-            optionsApplyDialog.Content = "You need to restart SiCode IDE to apply some of the changes.";
-            optionsApplyDialog.ButtonRightName = "OK";
-            optionsApplyDialog.ButtonLeftVisibility = Visibility.Hidden;
-            optionsApplyDialog.ButtonRightClick += OptionsApplyDialog_ButtonRightClick;
-            optionsApplyDialog.Show();
+            optionsApplyDialog.Show("Information", "The theme won´t apply unless you restart SiCode IDE", Wpf.Ui.Common.SymbolRegular.Info20, Wpf.Ui.Controls.ControlAppearance.Info);
         }
 
         private void OptionsApplyDialog_ButtonRightClick(object sender, RoutedEventArgs e)

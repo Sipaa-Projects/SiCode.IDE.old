@@ -22,6 +22,15 @@ namespace SiCode.IDE
         public AboutWindow()
         {
             InitializeComponent();
+            if (Configuration.Theme == 2 /**light theme**/)
+            {
+                label.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+                label1.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+                label2.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+                label3.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+                label4.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+            }
+
             this.WindowBackdropType = (Wpf.Ui.Controls.Window.WindowBackdropType)Configuration.VisualEffect;
         }
 

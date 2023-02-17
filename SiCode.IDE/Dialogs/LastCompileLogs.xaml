@@ -16,7 +16,7 @@
         </Grid>
         <ui:TitleBar Height="48" ShowMaximize="False" ShowMinimize="False"></ui:TitleBar>
         <Grid x:Name="ContentGrid" Margin="0,48,0,0" VerticalAlignment="Stretch" Background="#32323253" HorizontalAlignment="Stretch">
-            <TextBlock Background="Transparent" x:Name="compileLogs" TextWrapping="Wrap" TextAlignment="Center">Compile logs here</TextBlock>
+            <TextBlock Background="Transparent" x:Name="compileLogs" TextWrapping="Wrap" TextAlignment="Center" Foreground="White">Compile logs here</TextBlock>
         </Grid>
     </Grid>
 </ui:FluentWindow>

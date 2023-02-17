@@ -19,7 +19,13 @@ namespace SiCodeIDE
     {
         public string LastCompileLogs = "";
         public string LastCompileErrors = "";
-        public void Compile(Project p)
+
+        /// <summary>
+        /// Compiles a VB project
+        /// </summary>
+        /// <param name="p">The project to compile</param>
+        /// <returns>A status code (-1 : A C# project has been passed to the compiler, 0 : Sucess, 1 : Compile happened with errors)</returns>
+        public int Compile(Project p)
         {
             if (!Directory.Exists($@"{p.ProjectDir}\Binary\"))
             {
@@ -42,9 +48,7 @@ namespace SiCodeIDE
             }
             else
             {
-                MessageBox.Show("The Visual Basic compiler can't compile Visual Basic applications/libraries.",
-                    "SiCode IDE Visual Basic Compiler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return -1;
             }
             if (p.ReferencedAssemblies.GetReferencedAssembliesCount() >= 1)
             {
@@ -73,8 +77,10 @@ namespace SiCodeIDE
                                 ", '" + CompErr.ErrorText + ";" +
                                 Environment.NewLine + Environment.NewLine;
                 }
-                MessageBox.Show("Some errors happened during compiling. To see the errors, go to Compiler -> See last compile errors.", "SiCode IDE Visual Basic Compiler");
+                return 1;
             }
+
+            return 0;
         }
     }
 }

@@ -7,7 +7,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -31,7 +30,7 @@ namespace SiCode.IDE.Dialogs
 
         private void folderBrowseButton_Click(object sender, RoutedEventArgs e)
         {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            System.Windows.Forms.FolderBrowserDialog fbd = new System.Windows.Forms.FolderBrowserDialog();
             if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 this.pjLocTb.Text = fbd.SelectedPath;
@@ -46,6 +45,11 @@ namespace SiCode.IDE.Dialogs
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            if (String.IsNullOrEmpty(pjNameTb.Text) || String.IsNullOrEmpty(pjLocTb.Text))
+            {
+                MessageBox.Show("Please complete all the fields.", "SiCode IDE", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             this.Close();
         }
 
