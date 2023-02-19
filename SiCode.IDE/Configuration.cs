@@ -16,9 +16,11 @@ namespace SiCodeIDE
 
         public static string ConfigFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\SiCodeIDE\\Config.ini";
         public static string ConfigDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\SiCodeIDE";
+        public static string RecentProjectsDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\SiCodeIDE\\RecentProjects";
         const string DefaultConfig =
             "[SiCodeConfiguration]\n" +
             "VisualEffect=0\n" +
+            "Theme=2\n" +
             "EnableAutoSave=true";
 
         public static void SaveConfig()
@@ -33,11 +35,6 @@ namespace SiCodeIDE
 
         public static void CreateDefaultConfig()
         {
-            if (!Directory.Exists(ConfigDir))
-            {
-                Directory.CreateDirectory(ConfigDir);
-            }
-
             StreamWriter w = new StreamWriter(ConfigFile);
             w.WriteLine(DefaultConfig);
             w.Close();
@@ -88,6 +85,7 @@ namespace SiCodeIDE
             }
             else
             {
+                Console.WriteLine("[DEBUG] Creating config files...");
                 CreateDefaultConfig();
                 LoadConfig();
             }

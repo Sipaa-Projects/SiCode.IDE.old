@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -27,6 +28,16 @@ namespace SiCode.IDE
             s.Show();
 
             // Load SiCode IDE configuration
+
+            if (!Directory.Exists(Configuration.ConfigDir))
+            {
+                Directory.CreateDirectory(Configuration.ConfigDir);
+            }
+            if (!Directory.Exists(Configuration.RecentProjectsDir))
+            {
+                Directory.CreateDirectory(Configuration.RecentProjectsDir);
+            }
+
             Configuration.LoadConfig();
 
             // Set theme

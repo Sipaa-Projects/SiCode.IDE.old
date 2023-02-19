@@ -26,12 +26,12 @@
                 <ui:MenuItem Header="Save program..." SymbolIcon="Save20" Click="MenuItem_Click_3"/>
                 <ui:MenuItem Header="Return to home" SymbolIcon="Home20" Click="MenuItem_Click_8"/>
             </ui:MenuItem>
-            <ui:MenuItem SymbolIcon="PuzzlePiece24" ToolTip="Compiler">
-                <ui:MenuItem Header="Compile" SymbolIcon="PuzzlePiece20" Click="MenuItem_Click_1"/>
-                <ui:MenuItem Header="Run" SymbolIcon="Play20" Click="MenuItem_Click_2"/>
-                <ui:MenuItem Header="Last compile errors" SymbolIcon="ErrorCircle20" Click="MenuItem_Click_4"/>
-                <ui:MenuItem Header="Last compile logs" SymbolIcon="Text16" Click="MenuItem_Click_5"/>
-                <ui:MenuItem Header="Referenced Assemblies" SymbolIcon="List20" Click="MenuItem_Click_6"/>
+            <ui:MenuItem x:Name="cMenu" SymbolIcon="PuzzlePiece24" ToolTip="Compiler">
+                <ui:MenuItem x:Name="cMenu1" Header="Compile" SymbolIcon="PuzzlePiece20" Click="MenuItem_Click_1"/>
+                <ui:MenuItem x:Name="cMenu2" Header="Run" SymbolIcon="Play20" Click="MenuItem_Click_2"/>
+                <ui:MenuItem x:Name="cMenu3" Header="Last compile errors" SymbolIcon="ErrorCircle20" Click="MenuItem_Click_4"/>
+                <ui:MenuItem x:Name="cMenu4" Header="Last compile logs" SymbolIcon="Text16" Click="MenuItem_Click_5"/>
+                <ui:MenuItem x:Name="cMenu5" Header="Referenced Assemblies" SymbolIcon="List20" Click="MenuItem_Click_6"/>
             </ui:MenuItem>
             <ui:MenuItem SymbolIcon="Settings24" ToolTip="Settings" Click="MenuItem_Click_7"/>
             <ui:MenuItem SymbolIcon="Question24" ToolTip="Help">

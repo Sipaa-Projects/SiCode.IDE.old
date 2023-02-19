@@ -268,6 +268,7 @@ namespace SiCode.IDE
                                 foldingUpdateTimer.Start();
                                 textEditor.SyntaxHighlighting = HighlightingLoader.Load(HighlightingLoader.LoadXshd(new XmlTextReader(AppDomain.CurrentDomain.BaseDirectory + "HighlightRefs\\SS.xshd")), HighlightingManager.Instance);
                                 
+                                cMenu.IsEnabled = false;
                                 
                                 break;
                         }
