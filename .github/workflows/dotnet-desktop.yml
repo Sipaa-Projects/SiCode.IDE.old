@@ -57,6 +57,7 @@ jobs:
 
     env:
       Solution_Name: SiCodeIDE.sln                        # Replace with your solution name, i.e. MyWpfApp.sln.
+      Wap_Project_Path: SiCode.IDE.WapPackage\SiCode.IDE.WapPackage.wapproj
 
     steps:
     - name: Checkout
