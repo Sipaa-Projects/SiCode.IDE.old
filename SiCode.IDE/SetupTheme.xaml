@@ -1,0 +1,19 @@
+﻿<ui:FluentWindow x:Class="SiCode.IDE.SetupTheme"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        xmlns:local="clr-namespace:SiCode.IDE"
+        mc:Ignorable="d"
+        Title="SetupWelcome" Height="450" Width="800">
+    <Grid>
+        <ui:TitleBar Height="32" CloseClicked="TitleBar_CloseClicked"/>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 75" FontFamily="Segoe UI Variable Text" FontWeight="SemiBold" FontSize="24">Select your color theme</TextBlock>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 115" FontFamily="Segoe UI Variable Text" FontSize="14">Themes are really important in a IDE. If you stand hours</TextBlock>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 135" FontFamily="Segoe UI Variable Text" FontSize="14">making an application, use dark theme.</TextBlock>
+        <ui:Button HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 175" FontFamily="Segoe UI Variable Text" FontSize="14" Click="Button_Click">Light Theme</ui:Button>
+        <ui:Button HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,212,0,0" FontFamily="Segoe UI Variable Text" FontSize="14" Background="#323232" Foreground="White" Click="Button_Click_1">Dark Theme</ui:Button>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0, 15" FontFamily="Segoe UI Variable Text" FontSize="14">NOTE : SiCode IDE requires a restart in order to apply the selected theme</TextBlock>
+    </Grid>
+</ui:FluentWindow>

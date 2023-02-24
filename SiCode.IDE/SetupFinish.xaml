@@ -1,0 +1,16 @@
+﻿<ui:FluentWindow x:Class="SiCode.IDE.SetupFinish"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        xmlns:local="clr-namespace:SiCode.IDE"
+        mc:Ignorable="d"
+        Title="SetupWelcome" Height="450" Width="800">
+    <Grid>
+        <ui:TitleBar Height="32" CloseClicked="TitleBar_CloseClicked"/>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 75" FontFamily="Segoe UI Variable Text" FontWeight="SemiBold" FontSize="24">You're ready to go!</TextBlock>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 115" FontFamily="Segoe UI Variable Text" FontSize="14">You finished the setup assistant, you will be redirected to the home.</TextBlock>
+        <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="14,14" Click="Button_Click">Go to home</Button>
+    </Grid>
+</ui:FluentWindow>

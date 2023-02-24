@@ -13,7 +13,9 @@ namespace SiCodeIDE
         public static int VisualEffect { get; set; } = 0;
         public static int Theme { get; set; } = 0;
         public static bool EnableAutoSave { get; set; } = true;
+        public static bool UseUwpNotifications { get; set; } = true;
 
+        public static bool FirstLaunch = false;
         public static string ConfigFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\SiCodeIDE\\Config.ini";
         public static string ConfigDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\SiCodeIDE";
         public static string RecentProjectsDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\SiCodeIDE\\RecentProjects";
@@ -21,7 +23,8 @@ namespace SiCodeIDE
             "[SiCodeConfiguration]\n" +
             "VisualEffect=0\n" +
             "Theme=2\n" +
-            "EnableAutoSave=true";
+            "EnableAutoSave=true\n" +
+            "UseUwpNotifications=true";
 
         public static void SaveConfig()
         {
@@ -30,6 +33,7 @@ namespace SiCodeIDE
             w.WriteLine("VisualEffect=" + VisualEffect);
             w.WriteLine("Theme=" + Theme);
             w.WriteLine("EnableAutoSave=" + EnableAutoSave);
+            w.WriteLine("UseUwpNotifications=" + EnableAutoSave);
             w.Close();
         }
 
@@ -64,6 +68,9 @@ namespace SiCodeIDE
                                 case "EnableAutoSave":
                                     EnableAutoSave = Boolean.Parse(value);
                                     break;
+                                case "UseUwpNotifications":
+                                    UseUwpNotifications = Boolean.Parse(value);
+                                    break;
                                 case "Theme":
                                     Theme = int.Parse(value);
                                     break;
@@ -85,7 +92,7 @@ namespace SiCodeIDE
             }
             else
             {
-                Console.WriteLine("[DEBUG] Creating config files...");
+                FirstLaunch = true;
                 CreateDefaultConfig();
                 LoadConfig();
             }

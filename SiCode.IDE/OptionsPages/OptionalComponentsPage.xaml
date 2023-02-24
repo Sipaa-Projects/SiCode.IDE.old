@@ -1,0 +1,24 @@
+﻿<Page x:Class="SiCode.IDE.OptionsPages.OptionalComponentsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      xmlns:local="clr-namespace:SiCode.IDE.OptionsPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="OptionalComponentsPage">
+
+    <Grid>
+        <TextBlock x:Name="tb" Margin="20, 20" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="28" FontWeight="SemiBold">Optional Components</TextBlock>
+        <StackPanel Orientation="Horizontal">
+            <ui:Card Width="148" Height="148" Padding="0">
+                <Grid Width="136" Height="136">
+                    <Image Source="..\sicode.ico" Width="128" Height="64" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0, 74, 0, 0" TextAlignment="Center">SiCode IDE Core</TextBlock>
+                    <ui:Button Content="Uninstall" Icon="Delete20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 102, 0, 0"/>
+                </Grid>
+            </ui:Card>
+        </StackPanel>
+    </Grid>
+</Page>

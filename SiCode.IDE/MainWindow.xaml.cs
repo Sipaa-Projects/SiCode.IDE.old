@@ -13,6 +13,9 @@ using SiCodeIDE;
 using System.Diagnostics;
 using System.Xml;
 using Wpf.Ui.Appearance;
+using Microsoft.Toolkit.Uwp.Notifications;
+using Wpf.Ui.Controls;
+//using Wpf.Ui.Controls;
 
 namespace SiCode.IDE
 {
@@ -94,6 +97,7 @@ namespace SiCode.IDE
                             foldingStrategy.UpdateFoldings(foldingManager, textEditor.Document);
                         };
                         foldingUpdateTimer.Start();
+                        textEditor.SyntaxHighlighting = HighlightingLoader.Load(HighlightingLoader.LoadXshd(new XmlTextReader(AppDomain.CurrentDomain.BaseDirectory + "HighlightRefs\\CS.xshd")), HighlightingManager.Instance);
                         break;
                     case 1:
                         textEditor.TextArea.IndentationStrategy = new ICSharpCode.AvalonEdit.Indentation.CSharp.CSharpIndentationStrategy(textEditor.Options);
@@ -104,6 +108,7 @@ namespace SiCode.IDE
                             foldingStrategy.UpdateFoldings(foldingManager, textEditor.Document);
                         };
                         foldingUpdateTimer.Start();
+                        textEditor.SyntaxHighlighting = HighlightingLoader.Load(HighlightingLoader.LoadXshd(new XmlTextReader(AppDomain.CurrentDomain.BaseDirectory + "HighlightRefs\\CS.xshd")), HighlightingManager.Instance);
                         break;
                     case 2:
                         foldingUpdateTimer.Stop();
@@ -138,7 +143,7 @@ namespace SiCode.IDE
 
         private void TextEditor_TextChanged(object sender, EventArgs e)
         {
-            if (Configuration.EnableAutoSave)
+            if (Configuration.EnableAutoSave && CurrentProject != null && CurrentProject != ProjectIniReader.UnknownProject)
             {
                 File.WriteAllText(CurrentProject.Program, textEditor.Text);
             }
@@ -166,6 +171,7 @@ namespace SiCode.IDE
                                 foldingStrategy.UpdateFoldings(foldingManager, textEditor.Document);
                             };
                             foldingUpdateTimer.Start();
+                            textEditor.SyntaxHighlighting = HighlightingLoader.Load(HighlightingLoader.LoadXshd(new XmlTextReader(AppDomain.CurrentDomain.BaseDirectory + "HighlightRefs\\CS.xshd")), HighlightingManager.Instance);
                             break;
                         case 1:
                             textEditor.TextArea.IndentationStrategy = new ICSharpCode.AvalonEdit.Indentation.CSharp.CSharpIndentationStrategy(textEditor.Options);
@@ -176,6 +182,7 @@ namespace SiCode.IDE
                                 foldingStrategy.UpdateFoldings(foldingManager, textEditor.Document);
                             };
                             foldingUpdateTimer.Start();
+                            textEditor.SyntaxHighlighting = HighlightingLoader.Load(HighlightingLoader.LoadXshd(new XmlTextReader(AppDomain.CurrentDomain.BaseDirectory + "HighlightRefs\\CS.xshd")), HighlightingManager.Instance);
                             break;
                         case 2:
                             foldingUpdateTimer.Stop();
@@ -205,12 +212,6 @@ namespace SiCode.IDE
             }
         }
 
-        private void AboutMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            AboutWindow w = new AboutWindow();
-            w.Show();
-        }
-
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             NewProjectDialog w = new NewProjectDialog();
@@ -237,6 +238,7 @@ namespace SiCode.IDE
                                     foldingStrategy.UpdateFoldings(foldingManager, textEditor.Document);
                                 };
                                 foldingUpdateTimer.Start();
+                                textEditor.SyntaxHighlighting = HighlightingLoader.Load(HighlightingLoader.LoadXshd(new XmlTextReader(AppDomain.CurrentDomain.BaseDirectory + "HighlightRefs\\CS.xshd")), HighlightingManager.Instance);
                                 break;
                             case 1:
                                 textEditor.TextArea.IndentationStrategy = new ICSharpCode.AvalonEdit.Indentation.CSharp.CSharpIndentationStrategy(textEditor.Options);
@@ -247,6 +249,7 @@ namespace SiCode.IDE
                                     foldingStrategy.UpdateFoldings(foldingManager, textEditor.Document);
                                 };
                                 foldingUpdateTimer.Start();
+                                textEditor.SyntaxHighlighting = HighlightingLoader.Load(HighlightingLoader.LoadXshd(new XmlTextReader(AppDomain.CurrentDomain.BaseDirectory + "HighlightRefs\\CS.xshd")), HighlightingManager.Instance);
                                 break;
                             case 2:
                                 foldingUpdateTimer.Stop();
@@ -284,7 +287,7 @@ namespace SiCode.IDE
         {
             if (CurrentProject == null || CurrentProject == ProjectIniReader.UnknownProject)
             {
-                MessageBox.Show("Please open a project before doing this action.", "SiCode IDE", MessageBoxButton.OK);
+                NotificationHelper.ShowNotification(typeof(MainWindow), $"Please open a project before using the '{((MenuItem)sender).Header}' option", System.Windows.MessageBoxImage.Error);
             }
             else
             {
@@ -332,11 +335,29 @@ namespace SiCode.IDE
         {
             if (CurrentProject == null || CurrentProject == ProjectIniReader.UnknownProject)
             {
-                MessageBox.Show("Please open a project before doing this action.", "SiCode IDE", MessageBoxButton.OK);
+                NotificationHelper.ShowNotification(typeof(MainWindow), $"Please open a project before using the '{((MenuItem)sender).Header}' option", System.Windows.MessageBoxImage.Error);
             }
             else
             {
-                Process.Start($@"{CurrentProject.ProjectDir}\Binary\{CurrentProject.Name}.exe");
+                if (CurrentProject.ProjectType != ProjectType.SSApplication)
+                {
+                    Process.Start($@"{CurrentProject.ProjectDir}\Binary\{CurrentProject.Name}.exe");
+                }
+                else
+                {
+                    var ocii = OptionalComponentManager.GetComponentInstallPath(OptionalComponent.SSInterpreter, Architecture.AnyCPU);
+                    if (ocii != null)
+                    {
+                        Process.Start(ocii.ComponentInstallPath + "\\SSharpInterpreter.exe", CurrentProject.Program);
+                    }
+                    else
+                    {
+                        new ToastContentBuilder()
+                                    .AddText("You need to download the S# interpreter optional component to run S# applications.")
+                                    .AddText("SiCode IDE didn't found S# interpreter installed. To do this, go to Options -> Download optional components & select 'SSInterpreter' in the Component combo box. After that, click Install.")
+                                    .Show();
+                    }
+                }
             }
         }
 
@@ -344,7 +365,7 @@ namespace SiCode.IDE
         {
             if (CurrentProject == null || CurrentProject == ProjectIniReader.UnknownProject)
             {
-                MessageBox.Show("Please open a project before doing this action.", "SiCode IDE", MessageBoxButton.OK);
+                NotificationHelper.ShowNotification(typeof(MainWindow), $"Please open a project before using the '{((MenuItem)sender).Header}' option", System.Windows.MessageBoxImage.Error);
             }
             else
             {
@@ -356,7 +377,7 @@ namespace SiCode.IDE
         {
             if (CurrentProject == null || CurrentProject == ProjectIniReader.UnknownProject)
             {
-                MessageBox.Show("Please open a project before doing this action.", "SiCode IDE", MessageBoxButton.OK);
+                NotificationHelper.ShowNotification(typeof(MainWindow), $"Please open a project before using the '{((MenuItem)sender).Header}' option", System.Windows.MessageBoxImage.Error);
             }
             else
             {
@@ -386,7 +407,7 @@ namespace SiCode.IDE
         {
             if (CurrentProject == null || CurrentProject == ProjectIniReader.UnknownProject)
             {
-                MessageBox.Show("Please open a project before doing this action.", "SiCode IDE", MessageBoxButton.OK);
+                NotificationHelper.ShowNotification(typeof(MainWindow), $"Please open a project before using the '{((MenuItem)sender).Header}' option", System.Windows.MessageBoxImage.Error);
             }
             else
             {
@@ -417,7 +438,7 @@ namespace SiCode.IDE
 
             if (CurrentProject == null || CurrentProject == ProjectIniReader.UnknownProject)
             {
-                MessageBox.Show("Please open a project before doing this action.", "SiCode IDE", MessageBoxButton.OK);
+                NotificationHelper.ShowNotification(typeof(MainWindow), $"Please open a project before using the '{((MenuItem)sender).Header}' option", System.Windows.MessageBoxImage.Error);
             }
             else
             {
@@ -444,6 +465,20 @@ namespace SiCode.IDE
             w.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             w.Show();
             this.Close();
+        }
+
+        private void cMenu6_Click(object sender, RoutedEventArgs e)
+        {
+            DownloadComponents w = new DownloadComponents();
+            w.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            w.Show();
+        }
+
+        private void MenuItem_Click_9(object sender, RoutedEventArgs e)
+        {
+            AskChatGPT w = new AskChatGPT();
+            w.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            w.Show();
         }
     }
 }

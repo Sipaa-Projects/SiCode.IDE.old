@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SiCode.IDE;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,10 +26,23 @@ namespace SiCodeIDE.ProjectSystem
         public string Program;
         public ReferencedAssemblies ReferencedAssemblies;
     }
-    internal class ProjectIniReader
+
+    /// <summary>
+    /// Parser for SiCode IDE projects
+    /// </summary>
+    public class ProjectIniReader
     {
+        /// <summary>
+        /// This project is returned when the project parser fails to read the project.
+        /// </summary>
         public static Project UnknownProject = new Project() { Name = "Unknown", ProjectDir = "Unknown", ProjectPath = "Unknown", ProjectType = ProjectType.CSharpApplication, Program = "Unknown" };
 
+        /// <summary>
+        /// Create & save a project
+        /// </summary>
+        /// <param name="Name">The project name</param>
+        /// <param name="ProjectType">The type of the project</param>
+        /// <param name="ProjectDir">The project directory</param>
         public static void CreateProject(string Name, ProjectType ProjectType, string ProjectDir)
         {
             if (!Directory.Exists(ProjectDir))
@@ -79,6 +93,11 @@ namespace SiCodeIDE.ProjectSystem
             }
         }
 
+        /// <summary>
+        /// Read a project and put the infos into a Project class.
+        /// </summary>
+        /// <param name="file">The project to read</param>
+        /// <returns></returns>
         public static Project OpenProject(string file)
         {
             Project p = new Project();
@@ -92,7 +111,7 @@ namespace SiCodeIDE.ProjectSystem
                 {
                     if (String.IsNullOrEmpty(File.ReadAllText(file)))
                     {
-                        MessageBox.Show("The SiCode IDE project reader can't read empty/non existant files.", "SiCodeIDE.ProjectSystem.ProjectIniReader");
+                        NotificationHelper.ShowNotification(typeof(ProjectIniReader), "The SiCode IDE project reader can't read empty/non existant files.", System.Windows.MessageBoxImage.Error);
                         return UnknownProject;
                     }
                     else
@@ -126,7 +145,7 @@ namespace SiCodeIDE.ProjectSystem
                                 }
                                 else
                                 {
-                                    MessageBox.Show("The project than you want open is valid, but no program file found in the project directory.", "SiCodeIDE.ProjectSystem.ProjectIniReader");
+                                    NotificationHelper.ShowNotification(typeof(ProjectIniReader), "The project than you want open is valid, but no program file found in the project directory.", System.Windows.MessageBoxImage.Error);
                                     return UnknownProject;
                                 }
                             }
@@ -141,7 +160,7 @@ namespace SiCodeIDE.ProjectSystem
                                 }
                                 else
                                 {
-                                    MessageBox.Show("The project than you want open is valid, but no program file found in the project directory.", "SiCodeIDE.ProjectSystem.ProjectIniReader");
+                                    NotificationHelper.ShowNotification(typeof(ProjectIniReader), "The project than you want open is valid, but no program file found in the project directory.", System.Windows.MessageBoxImage.Error);
                                     return UnknownProject;
                                 }
                             }
@@ -157,21 +176,21 @@ namespace SiCodeIDE.ProjectSystem
                                 }
                                 else
                                 {
-                                    MessageBox.Show("The project than you want open is valid, but no index file found in the project directory.", "SiCodeIDE.ProjectSystem.ProjectIniReader");
+                                    NotificationHelper.ShowNotification(typeof(ProjectIniReader), "The project than you want open is valid, but no program file found in the project directory.", System.Windows.MessageBoxImage.Error);
                                     return UnknownProject;
                                 }
                             }
                         }
                     }
-                    MessageBox.Show("The project than you want open is invalid.", "SiCodeIDE.ProjectSystem.ProjectIniReader");
+                    NotificationHelper.ShowNotification(typeof(ProjectIniReader), "The project than you want open is invalid.", System.Windows.MessageBoxImage.Error);
                     return UnknownProject;
                 }
 
-                MessageBox.Show("The project than you want open is invalid.", "SiCodeIDE.ProjectSystem.ProjectIniReader");
+                NotificationHelper.ShowNotification(typeof(ProjectIniReader), "The project than you want open is invalid.", System.Windows.MessageBoxImage.Error);
                 return UnknownProject;
             }
 
-            MessageBox.Show("The project than you want open doens't exists!", "SiCodeIDE.ProjectSystem.ProjectIniReader");
+            NotificationHelper.ShowNotification(typeof(ProjectIniReader), "The project than you want open doens't exists!", System.Windows.MessageBoxImage.Error);
             return UnknownProject;
         }
     }

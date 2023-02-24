@@ -17,14 +17,12 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Windows.Win32;
-
 namespace SiCode.IDE
 {
     /// <summary>
     /// Interaction logic for HomeWindow.xaml
     /// </summary>
-    public unsafe partial class HomeWindow : Wpf.Ui.Controls.Window.FluentWindow
+    public partial class HomeWindow : Wpf.Ui.Controls.Window.FluentWindow
     {
         public HomeWindow()
         {
@@ -51,8 +49,8 @@ namespace SiCode.IDE
                 }
             }
 
-            if (Configuration.Theme == (int)Wpf.Ui.Appearance.ThemeType.Dark)
-                PInvoke.DwmSetWindowAttribute(new Windows.Win32.Foundation.HWND(new WindowInteropHelper(this).Handle), Windows.Win32.Graphics.Dwm.DWMWINDOWATTRIBUTE.DWMWA_USE_IMMERSIVE_DARK_MODE, (void*)1, sizeof(bool));
+            //if (Configuration.Theme == (int)Wpf.Ui.Appearance.ThemeType.Dark)
+            //    PInvoke.DwmSetWindowAttribute(new Windows.Win32.Foundation.HWND(new WindowInteropHelper(this).Handle), Windows.Win32.Graphics.Dwm.DWMWINDOWATTRIBUTE.DWMWA_USE_IMMERSIVE_DARK_MODE, (void*)1, sizeof(bool));
         }
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)

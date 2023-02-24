@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SiCodeIDE;
-namespace SiCode.IDE
+namespace SiCode.IDE.OptionsPages
 {
     /// <summary>
     /// Interaction logic for AboutWindow.xaml
     /// </summary>
-    public partial class AboutWindow : Wpf.Ui.Controls.Window.FluentWindow
+    public partial class AboutPage : Page
     {
-        public AboutWindow()
+        public AboutPage()
         {
             InitializeComponent();
             if (Configuration.Theme == 2 /**light theme**/)
@@ -31,12 +31,17 @@ namespace SiCode.IDE
                 label4.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
             }
 
-            this.WindowBackdropType = (Wpf.Ui.Controls.Window.WindowBackdropType)Configuration.VisualEffect;
+            //this.WindowBackdropType = (Wpf.Ui.Controls.Window.WindowBackdropType)Configuration.VisualEffect;
         }
 
         private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
 
+        }
+
+        private void label_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            throw new Exception("Debug");
         }
     }
 }
