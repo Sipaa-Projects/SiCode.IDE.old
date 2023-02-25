@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SiCodeIDE;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,11 @@ namespace SiCode.IDE.OptionsPages
         public OptionalComponentsPage()
         {
             InitializeComponent();
+            if (Configuration.Theme == 1)
+            {
+                tb.Foreground = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
+                tb1.Foreground = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
+            }
         }
     }
 }

@@ -12,26 +12,22 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CefSharp;
+using SiCodeIDE;
 
 namespace SiCode.IDE
 {
     /// <summary>
     /// Logique d'interaction pour AskChatGPT.xaml
     /// </summary>
-    public partial class AskChatGPT : Window
+    public partial class AskChatGPT : Wpf.Ui.Controls.Window.FluentWindow
     {
         public AskChatGPT()
         {
             InitializeComponent();
-        }
+            cwb.Address = "https://chat.openai.com";
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            // yes i don't really care of my openai api key...
-            //var api = new OpenAIAPI("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");
-            //var result = api.Completions.GetCompletion("One Two Three One Two");
-            //Console.WriteLine(result);
-            
+            this.WindowBackdropType = (Wpf.Ui.Controls.Window.WindowBackdropType)Configuration.VisualEffect;
         }
     }
 }

@@ -22,7 +22,7 @@ namespace SiCodeIDE
         const string DefaultConfig =
             "[SiCodeConfiguration]\n" +
             "VisualEffect=0\n" +
-            "Theme=2\n" +
+            "Theme=1\n" +
             "EnableAutoSave=true\n" +
             "UseUwpNotifications=true";
 

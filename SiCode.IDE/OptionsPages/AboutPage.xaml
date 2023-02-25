@@ -11,7 +11,7 @@
     <Grid>
         <Label x:Name="label" Content="About SiCode IDE" FontFamily="Segoe UI Variable" FontSize="28" FontWeight="SemiBold" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" MouseDoubleClick="label_MouseDoubleClick"/>
         <Label x:Name="label1" Content="SiCode IDE" FontFamily="Segoe UI Variable" FontSize="16" FontWeight="Regular" HorizontalAlignment="Left" Margin="20,75,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label2" Content="Version 1.7 Beta" FontFamily="Segoe UI Variable" FontSize="16" FontWeight="Regular" HorizontalAlignment="Left" Margin="20,105,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="Version 1.7 Release Preview" FontFamily="Segoe UI Variable" FontSize="16" FontWeight="Regular" HorizontalAlignment="Left" Margin="20,105,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label4" Content="Thanks to GreenSoup Dev for the icon!" FontFamily="Segoe UI Variable" FontSize="16" FontWeight="Regular" HorizontalAlignment="Left" Margin="20,142,0,60" VerticalAlignment="Bottom"/>
         <Label x:Name="label5" Content="Thanks to NokoDev for finding a ton of bugs!" FontFamily="Segoe UI Variable" FontSize="16" FontWeight="Regular" HorizontalAlignment="Left" Margin="20,142,0,90" VerticalAlignment="Bottom"/>
         <ui:Hyperlink x:Name="label3" Content="View the project on GitHub" FontFamily="Segoe UI Variable" FontSize="16" FontWeight="Regular" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0,0,20" NavigateUri="https://github.com/RaphMar2021/SiCodeIDE"/>

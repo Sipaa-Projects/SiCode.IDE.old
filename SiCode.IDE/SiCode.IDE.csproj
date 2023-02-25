@@ -335,6 +335,9 @@
     <PackageReference Include="AvalonEdit">
       <Version>6.2.0.78</Version>
     </PackageReference>
+    <PackageReference Include="CefSharp.Wpf">
+      <Version>110.0.280</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications">
       <Version>7.1.3</Version>
     </PackageReference>

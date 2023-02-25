@@ -11,14 +11,10 @@
 
     <Grid>
         <TextBlock x:Name="tb" Margin="20, 20" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="28" FontWeight="SemiBold">Optional Components</TextBlock>
-        <StackPanel Orientation="Horizontal">
-            <ui:Card Width="148" Height="148" Padding="0">
-                <Grid Width="136" Height="136">
-                    <Image Source="..\sicode.ico" Width="128" Height="64" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
-                    <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0, 74, 0, 0" TextAlignment="Center">SiCode IDE Core</TextBlock>
-                    <ui:Button Content="Uninstall" Icon="Delete20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 102, 0, 0"/>
-                </Grid>
-            </ui:Card>
-        </StackPanel>
+        <TextBlock x:Name="tb1" Margin="20,74,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" FontWeight="Regular">
+            This page isn't available for the moment.
+            Please wait a later version of SiCode IDE to see this page work.
+        </TextBlock>
+
     </Grid>
 </Page>
