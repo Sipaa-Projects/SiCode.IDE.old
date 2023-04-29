@@ -1,0 +1,33 @@
+<!-- Copyright (c) Microsoft Corporation and Contributors. -->
+<!-- Licensed under the MIT License. -->
+
+<Page
+    x:Class="SiCode.IDE.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SiCode.IDE"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mcedit="using:Monaco"
+    Background="{ThemeResource LayerOnAccentAcrylicFillColorDefault}"
+    mc:Ignorable="d">
+
+    <Grid x:Name="mgr">
+        <MenuBar Height="40" VerticalAlignment="Top">
+            <MenuBarItem Title="File">
+                <MenuFlyoutItem Text="SAMPLE_ITEM"/>
+                <MenuFlyoutSeparator />
+                <MenuFlyoutItem Text="WinUI 3 Preview" ToolTipService.ToolTip="You are previewing the WinUI 3 version of SiCode IDE. Please report any bugs to the SiCode IDE's GitHub repository">
+                    <MenuFlyoutItem.Icon>
+                        <FontIcon Glyph="&#xED56;"/>
+                    </MenuFlyoutItem.Icon>
+                </MenuFlyoutItem>
+            </MenuBarItem>
+            <MenuBarItem Title="Help">
+                <MenuFlyoutItem Text="About SiCode IDE" Click="MenuFlyoutItem_Click"/>
+            </MenuBarItem>
+        </MenuBar>
+        
+        <mcedit:MonacoEditor x:Name="mcedit" Margin="0, 40, 0, 0"/>
+    </Grid>
+</Page>

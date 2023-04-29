@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SiCode.IDE (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "SiCode.IDE (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
