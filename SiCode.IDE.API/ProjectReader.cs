@@ -26,7 +26,7 @@ namespace SiCode.IDE.API
     public class ProjectIniReader
     {
         /// <summary>
-        /// This project is returned when the project parser fails to read the project.
+        /// This project is returned when the project parser fails to read the provided project.
         /// </summary>
         public static Project UnknownProject = new Project() { Name = "Unknown", ProjectDir = "Unknown", ProjectPath = "Unknown", ProjectType = ProjectType.CSharpApplication, Program = "Unknown" };
 
