@@ -15,7 +15,30 @@
     <Grid x:Name="mgr">
         <MenuBar Height="40" VerticalAlignment="Top">
             <MenuBarItem Title="File">
-                <MenuFlyoutItem Text="SAMPLE_ITEM"/>
+                <MenuFlyoutItem Text="New">
+                    <MenuFlyoutItem.Icon>
+                        <FontIcon Glyph="&#xE8A5;"/>
+                    </MenuFlyoutItem.Icon>
+                    <MenuFlyoutItem.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="Control" Key="N"/>
+                    </MenuFlyoutItem.KeyboardAccelerators>
+                </MenuFlyoutItem>
+                <MenuFlyoutItem Text="Open">
+                    <MenuFlyoutItem.Icon>
+                        <FontIcon Glyph="&#xE838;"/>
+                    </MenuFlyoutItem.Icon>
+                    <MenuFlyoutItem.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="Control" Key="O"/>
+                    </MenuFlyoutItem.KeyboardAccelerators>
+                </MenuFlyoutItem>
+                <MenuFlyoutItem Text="Save">
+                    <MenuFlyoutItem.Icon>
+                        <FontIcon Glyph="&#xE74E;"/>
+                    </MenuFlyoutItem.Icon>
+                    <MenuFlyoutItem.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="Control" Key="S"/>
+                    </MenuFlyoutItem.KeyboardAccelerators>
+                </MenuFlyoutItem>
                 <MenuFlyoutSeparator />
                 <MenuFlyoutItem Text="WinUI 3 Preview" ToolTipService.ToolTip="You are previewing the WinUI 3 version of SiCode IDE. Please report any bugs to the SiCode IDE's GitHub repository">
                     <MenuFlyoutItem.Icon>

@@ -35,6 +35,20 @@ namespace SiCode.IDE
         public MainPage()
         {
             this.InitializeComponent();
+
+            DispatcherTimer t = new();
+            t.Interval = TimeSpan.FromMilliseconds(5000);
+            t.Tick += T_Tick;
+            t.Start();
+        }
+
+        private async void T_Tick(object sender, object e)
+        {
+            if (((FrameworkElement)this.Content).ActualTheme == ElementTheme.Light)
+                await mcedit.SetThemeAsync(Monaco.EditorThemes.VisualStudioLight);
+            else
+                await mcedit.SetThemeAsync(Monaco.EditorThemes.VisualStudioDark);
+
         }
 
         string ParseString(string jsstring)

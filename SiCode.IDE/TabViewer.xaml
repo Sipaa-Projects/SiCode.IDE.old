@@ -15,7 +15,7 @@
                              VerticalAlignment="Stretch"
                              AllowDropTabs="True"
                              CanDragTabs="True"
-                             SelectionChanged="Tabs_SelectionChanged"
+                             TabCloseRequested="Tabs_TabCloseRequested"
                              AddTabButtonClick="Tabs_AddTabButtonClick"
                              CanReorderTabs="True">
             <TabView.Resources>

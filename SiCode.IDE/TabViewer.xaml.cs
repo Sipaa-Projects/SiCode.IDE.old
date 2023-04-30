@@ -15,6 +15,8 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml.Media.Imaging;
+using Microsoft.Toolkit.Uwp.Notifications;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -58,14 +60,14 @@ namespace SiCode.IDE
             CustomDragRegion.MinWidth = 188;
         }
 
-        private void Tabs_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void Tabs_AddTabButtonClick(TabView sender, object args)
         {
             Tabs.TabItems.Add(GetNewTab());
+        }
+
+        private void Tabs_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
+        {
+            Tabs.TabItems.Remove(args.Item);
         }
     }
 }
