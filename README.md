@@ -1,3 +1,5 @@
+# This version of SiCode IDE is outdated, please check the new one made with [WinUI](https://github.com/Sipaa-Projects/SiCode.IDE)
+
 ![image](https://user-images.githubusercontent.com/81994075/214524136-62a63642-eb3a-4ea1-ad0e-180e20fa8113.png)
 
 # SiCode IDE
